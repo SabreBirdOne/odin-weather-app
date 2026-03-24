@@ -1,0 +1,19 @@
+Setup Visual Crossing account and get a free-tier API key.
+
+Write functions to fetch data from the API
+
+Write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app.
+- GetInfoByLocation method?
+
+Set up a form to let users:
+- input their specific location. 
+- toggle between Celsius and Fahrenheit
+- submit form
+
+Also some DOM element to display the weather info upon form submission.
+- Weather info divs should disappear when user input is invalid.
+
+Add any styling. 
+- Maybe background changes based on weather data? 
+- weather icons? save a placeholder dom node for that while I figure out dynamic imports. (BRANCH).
+- loading indicator that appears from form submission to when API returns data. (BRANCH).
