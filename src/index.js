@@ -1,6 +1,5 @@
 import { fetchJSONFromVC } from "./fetchers";
-
-const API_KEY = 'NY4Q722PUHG3SGC5NJMSH7LNN';
+import API_KEY from "./APIKey";
 
 fetchJSONFromVC(API_KEY, 'London')
     .then((json) => {
