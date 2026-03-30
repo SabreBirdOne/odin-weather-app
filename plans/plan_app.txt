@@ -3,17 +3,76 @@ Setup Visual Crossing account and get a free-tier API key.
 Write functions to fetch data from the API
 
 Write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app.
-- GetInfoByLocation method?
+- GetInfoByLocation method
 
-Set up a form to let users:
-- input their specific location. 
-- toggle between Celsius and Fahrenheit
-- submit form
+DATA:
+Weather data is available every hour for the next 14 days. (24 * 14 rows!)
+json.days[index] get an object of weather data with the next 14 days (index in [0, 14]) as keys.
 
-Also some DOM element to display the weather info upon form submission.
-- Weather info divs should disappear when user input is invalid.
+They have weather data per hour of day but honestly I'm not gonna bother...
+
+Interested data in json.days[index]:
+- datetime (the index-th next day)
+- conditions (text)
+- temp (Fahrenheit, average of day)
+- tempmax (Fahrenheit) 
+- tempmin (Fahrenheit)
+- humidity (%)
+- sunrise (hh:mi:ss)
+- sunset (hh:mi:ss)
+
+DOM: 
+
+<form>:
+- input a city as text.
+- submit form.
+
+<button> to toggle between Celsius and Fahrenheit in DOM elements below.
+
+A div.weatherReport element to display the weather info upon form submission.
+weatherReport contains weather data for each day.
+- Use flexbox for the big div, just a column of weatherCards.
+
+Each day is its own div.weatherCard. 
+- Each data point above is just gonna be a <p> element...
+- The temperature ones get a class "celsius" xor "fahrenheit" so DOM manipulators can find them 
+    when C/K toggle events happen.
 
 Add any styling. 
-- Maybe background changes based on weather data? 
 - weather icons? save a placeholder dom node for that while I figure out dynamic imports. (BRANCH).
-- loading indicator that appears from form submission to when API returns data. (BRANCH).
+    + Weather icon is some <img> element inside div.weatherCard.
+
+- loading indicator that appears from form submission to when API returns data. (BRANCH)
+    + Put indicator between the C/K toggle button and weatherReport div.
+
+Code needed: 
+    fetchers to get data from API server
+    jsonProcessors take fetched response to construct weather data as public object literals.
+
+    CKToggler to toggle temperature between Celsius and Fahrenheit for the DOM nodes.
+
+    DOM factories for:
+        - Main page
+        - Form with location input text
+        - C/K toggle button
+        - weatherReport and its weatherCard(s)
+
+    App flow:
+    Empty main page > user submits form > fetch from VC server 
+        > throws error 
+        > console.log / alert 
+        > empty main page
+    
+    Empty main page > user submits form > fetch from VC server
+        > response with resolve()
+        > clear out any previous weatherReport  
+        > jsonProcessors sends object literals to weatherCard factories 
+        > weatherCard factories build weatherCards
+        > add new weatherCards to weatherReport 
+        > main page has populated weatherReport 
+
+    Empty/Populated weatherReport > C/K toggle button
+        > toggler finds all weatherCard temperature <p>s with "celsius" or "fahrenheit" class
+        > changes textContent to appropriate temperature and changes the classList
+        
+
