@@ -1,10 +1,14 @@
 import { fetchJSONFromVC } from "./fetchers";
-import API_KEY from "./APIKey";
+import { getWeatherDataFromJSON } from "./jsonProcessors";
+import APIKey from "./APIKey";
 
-fetchJSONFromVC(API_KEY, 'London')
-    .then((json) => {
-        console.log(json);
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+
+const city = "Harrisburg";
+try {
+    const jsonData = fetchJSONFromVC(APIKey, city);
+    const weatherData = getWeatherDataFromJSON(jsonData);
+    console.log(weatherData);
+}
+catch (error){
+    alert(error);
+}
