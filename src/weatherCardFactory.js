@@ -1,19 +1,25 @@
 import {format} from "date-fns";
 
-function createCardRow(headerText, bodyText, bodyClassList = []){
+function createCardRow(headerText, bodyTexts, rowClassList = []){
+    // bodyTexts: array of strings following the headerText.
     let row = document.createElement("div");
     row.classList.add("weatherCardRow");
 
     let rowHeader = document.createElement("h4");
     rowHeader.textContent = headerText;
+    row.appendChild(rowHeader);
 
-    let rowBody = document.createElement("p");
-    rowBody.textContent = bodyText;
-    bodyClassList.forEach((element) => rowBody.classList.add(element));
+    let rowBody = document.createElement("div");
+    rowBody.classList.add("weatherCardRowBody");
 
-    for (const element of [rowHeader, rowBody]){
-        row.appendChild(element);
-    }
+    bodyTexts.forEach((element) => {
+        let column = document.createElement("p");
+        column.textContent = element;
+        rowBody.appendChild(column);
+    })
+    row.appendChild(rowBody);
+
+    rowClassList.forEach((element) => row.classList.add(element));
     return row;
 }
 
@@ -22,19 +28,30 @@ export default function createWeatherCard(cardData){
     weatherCard.classList.add("weatherCard");
 
     console.log(cardData);
-    const dateP         = createCardRow("Date", format(cardData.datetime, "MM-dd-yyyy"));
-    const conditionsP   = createCardRow("Conditions", cardData.conditions);
-    const tempP         = createCardRow("Average Temperature", `${cardData.temp} F`, ["fahrenheit"]);
-    const tempmaxP      = createCardRow("Highest", `${cardData.tempmax} F`, ["fahrenheit"]);
-    const tempminP      = createCardRow("Lowest", `${cardData.tempmin} F`, ["fahrenheit"]);
-    const humidityP     = createCardRow("Humidity", `${cardData.humidity} %`);
-    const sunriseP      = createCardRow("Sunrise at", cardData.sunrise);
-    const sunsetP       = createCardRow("Sunset at", cardData.sunset);
+    const dateP         = createCardRow("Date", [format(cardData.datetime, "MM-dd-yyyy")]);
+    const conditionsP   = createCardRow("Conditions", [cardData.conditions]);
+    const tempsP        = createCardRow(
+        "Temperatures", 
+        [
+            "(Fahrenheit)",
+            `AVG: ${cardData.temp}`,
+            `MIN: ${cardData.tempmax}`,
+            `MAX: ${cardData.tempmin}`
+        ],
+        ["fahrenheit"]
+    );
+    const humidityP     = createCardRow("Humidity", [`${cardData.humidity} %`]);
+    const sunP      = createCardRow(
+        "Sun", 
+        [
+            `Sunrise at: ${cardData.sunrise}`,
+            `Sunset at: ${cardData.sunset}`
+        ]
+    );
 
     for (const element of [
         dateP, conditionsP,
-        tempP, tempmaxP, tempminP,
-        humidityP, sunriseP, sunsetP
+        tempsP, humidityP, sunP
     ]){
         weatherCard.appendChild(element);
     }

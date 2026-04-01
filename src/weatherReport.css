@@ -1,0 +1,30 @@
+.weatherReportDiv {
+    display: flex;
+    /* flex-direction: column;*/
+    flex-wrap: wrap;
+}
+
+.weatherCard {
+    flex: 1 1 0;
+    max-width: 800px;
+
+    margin: 2rem 0.5rem;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1rem;
+
+    background-color: white;
+}
+
+.weatherCardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.weatherCardRowBody {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
