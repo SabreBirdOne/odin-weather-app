@@ -1,10 +1,12 @@
+import createSearchForm from "./searchFormFactory";
+
 export default function addMainPageToBody(){
     const body = document.querySelector("body");
 
     const mainPageHeader = document.createElement("h1");
     mainPageHeader.textContent = "ODIN Weather App";
 
-    const searchForm = document.createElement("form"); // replace with factory call later
+    const searchForm = createSearchForm();
 
     const CKToggleButton = document.createElement("button") // replace with factory call later
 
