@@ -3,6 +3,8 @@ import {
     createButton 
 } from "./formComponentFactories";
 
+import getWeatherDataHandler from "./getWeatherDataButtonHandler";
+
 export default function createSearchForm(){
     let form = document.createElement('form');
 
@@ -15,6 +17,7 @@ export default function createSearchForm(){
     );
 
     // add handler to submitButton here.
+    getWeatherDataButton.addEventListener("click", getWeatherDataHandler);
 
     for (const element of [
         searchFieldLabel,
