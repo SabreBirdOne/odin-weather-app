@@ -1,5 +1,6 @@
 import { fetchJSONFromVC } from "./fetchers";
 import { getWeatherDataFromJSON } from "./jsonProcessors";
+import fillReport from "./fillWeatherReport";
 import APIKey from "./APIKey";
 
 export default async function getWeatherDataHandler(event) {
@@ -11,7 +12,7 @@ export default async function getWeatherDataHandler(event) {
     try {
         const jsonData = await fetchJSONFromVC(APIKey, searchedCity);
         weatherData = await getWeatherDataFromJSON(jsonData); 
-        console.log(weatherData);
+        fillReport(weatherData);
     }
     catch (error){
         alert(error);
