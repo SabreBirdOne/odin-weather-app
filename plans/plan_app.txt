@@ -49,13 +49,13 @@ Code needed:
     fetchers to get data from API server
     jsonProcessors take fetched response to construct weather data as public object literals.
 
-    CKToggler to toggle temperature between Celsius and Fahrenheit for the DOM nodes.
-
     DOM factories for:
         - Main page
         - Form with location input text
         - C/K toggle button
         - weatherReport and its weatherCard(s)
+
+    CKToggler to toggle temperature between Celsius and Fahrenheit for the DOM nodes.
 
     App flow:
     Empty main page > user submits form > fetch from VC server 

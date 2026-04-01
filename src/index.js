@@ -1,7 +1,7 @@
 import { fetchJSONFromVC } from "./fetchers";
 import { getWeatherDataFromJSON } from "./jsonProcessors";
 import APIKey from "./APIKey";
-
+import init from "./mainPageFactory.js";
 
 const city = "Harrisburg";
 
@@ -16,4 +16,5 @@ async function getWeatherData(){
     }
 }
 
-getWeatherData();
+//getWeatherData();
+init();
