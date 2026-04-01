@@ -1,5 +1,5 @@
 function getWeatherDataFromJSON(json){
-    const data = new Array();
+    const data = [];
     
     for(let index = 0; index < json.days.length; index++){
         const newDayData = {};

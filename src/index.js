@@ -4,11 +4,16 @@ import APIKey from "./APIKey";
 
 
 const city = "Harrisburg";
-try {
-    const jsonData = fetchJSONFromVC(APIKey, city);
-    const weatherData = getWeatherDataFromJSON(jsonData);
-    console.log(weatherData);
+
+async function getWeatherData(){
+    try {
+        const jsonData = await fetchJSONFromVC(APIKey, city);
+        const weatherData = await getWeatherDataFromJSON(jsonData);
+        console.log(weatherData);
+    }
+    catch (error){
+        alert(error);
+    }
 }
-catch (error){
-    alert(error);
-}
+
+getWeatherData();
