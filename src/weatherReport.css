@@ -5,8 +5,7 @@
 }
 
 .weatherCard {
-    flex: 1 1 0;
-    max-width: 800px;
+    flex: 1;
 
     margin: 2rem 0.5rem;
     border: 2px solid black;
@@ -26,5 +25,5 @@
 .weatherCardRowBody {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 }
