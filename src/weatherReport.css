@@ -22,8 +22,12 @@
     gap: 3rem;
 }
 
-.weatherCardRowBody {
+.weatherCardRowBody, .weatherCardTempRowBody {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+.weatherCardTempRowBody > :first-child > * {
+    text-align: right;
 }

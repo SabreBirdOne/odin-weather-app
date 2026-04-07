@@ -35,7 +35,7 @@ function createTempRow(headerText, temps, tempUnit) {
     row.appendChild(rowHeader);
 
     let rowBody = document.createElement("div");
-    rowBody.classList.add("weatherCardRowBody");
+    rowBody.classList.add("weatherCardTempRowBody");
 
     temps.forEach((element) => {
         let tempItem = document.createElement("div");
