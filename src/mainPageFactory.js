@@ -1,4 +1,5 @@
 import createSearchForm from "./searchFormFactory";
+import createCKToggleButton from "./CKToggleButtonFactory";
 
 export default function addMainPageToBody(){
     const body = document.querySelector("body");
@@ -8,7 +9,7 @@ export default function addMainPageToBody(){
 
     const searchForm = createSearchForm();
 
-    const CKToggleButton = document.createElement("button") // replace with factory call later
+    const CKToggleButton = createCKToggleButton();
 
     const weatherReportDiv = document.createElement("div");
     weatherReportDiv.classList.add("weatherReportDiv");
