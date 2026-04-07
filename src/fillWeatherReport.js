@@ -2,7 +2,7 @@ import createWeatherCard from "./weatherCardFactory";
 
 export default function fillReport(data){
     let weatherReport = document.querySelector("div.weatherReportDiv");
-    console.log(weatherReport);
+
     while (weatherReport.firstChild){
         weatherReport.removeChild(weatherReport.firstChild);
     }

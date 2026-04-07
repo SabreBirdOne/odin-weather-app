@@ -20,7 +20,6 @@ export default function addMainPageToBody(){
         CKToggleButton,
         weatherReportDiv
     ]){
-        console.log(element);
         body.appendChild(element);
     }
 }
